@@ -29,9 +29,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.unitconverter.ui.theme.UnitConverterTheme
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.blur
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import com.example.unitconverter.R
 import kotlin.math.roundToInt
 import kotlin.math.roundToLong
 
@@ -47,11 +57,22 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(), //modifier define how the certain setting of surface are going to be
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    BackgroundImage()
                     UnitConverter()
                 }
             }
         }
     }
+}
+
+
+@Composable
+fun BackgroundImage() {
+    Image(
+        painter = painterResource(id = R.drawable.gojo), // Replace "background_image" with the name of your image file
+        contentDescription = null, // Provide a content description if needed
+        modifier = Modifier.aspectRatio(1.8f,matchHeightConstraintsFirst =true).alpha(0.5f) // Ensure the image fills the entire screen
+    )
 }
 
 @Composable
